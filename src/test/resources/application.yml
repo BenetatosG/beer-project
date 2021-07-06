@@ -1,0 +1,8 @@
+spring:
+  datasource.url: jdbc:h2:mem:testdb
+  datasource.username: sa
+  datasource.password: password
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+punk-api:
+  url: https://api.punkapi.com
