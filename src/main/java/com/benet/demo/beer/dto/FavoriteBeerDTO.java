@@ -1,5 +1,7 @@
 package com.benet.demo.beer.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Value;
 
 import javax.validation.constraints.NotNull;
@@ -7,6 +9,8 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Value
+@Builder
+@AllArgsConstructor
 public class FavoriteBeerDTO {
 
     Long id;

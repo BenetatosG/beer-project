@@ -4,5 +4,9 @@ spring:
   datasource.password: password
   jpa.database-platform: org.hibernate.dialect.H2Dialect
 
+wiremock:
+  host: http://localhost
+  port: 4545
+
 punk-api:
-  url: https://api.punkapi.com
+  url: ${wiremock.host}:${wiremock.port}

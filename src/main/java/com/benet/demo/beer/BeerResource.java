@@ -24,10 +24,10 @@ public class BeerResource {
     private final BeerService beerService;
 
     @GetMapping
-    public ResponseEntity<List<BeerDTO>> getBeers(@RequestParam("fermentationType") FermentationType fermentationType,
-                                                  @RequestParam("ibu_lt") Integer ibuLessThan,
-                                                  @RequestParam("ibu_gt") Integer ibuGreaterThan,
-                                                  @RequestParam("food") String food) {
+    public ResponseEntity<List<BeerDTO>> getBeers(@RequestParam(value = "fermentationType", required = false) FermentationType fermentationType,
+                                                  @RequestParam(value = "ibu_lt", required = false) Integer ibuLessThan,
+                                                  @RequestParam(value = "ibu_gt", required = false) Integer ibuGreaterThan,
+                                                  @RequestParam(value = "food", required = false) String food) {
 
         List<BeerDTO> beers = beerService.findBeers(fermentationType, ibuLessThan, ibuGreaterThan, food)
                 .stream()

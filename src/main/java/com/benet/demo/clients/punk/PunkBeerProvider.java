@@ -3,8 +3,6 @@ package com.benet.demo.clients.punk;
 import com.benet.demo.beer.BeerMapper;
 import com.benet.demo.beer.BeerProvider;
 import com.benet.demo.beer.domain.Beer;
-import com.benet.demo.beer.dto.FermentationType;
-import com.benet.demo.beer.util.FermentationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

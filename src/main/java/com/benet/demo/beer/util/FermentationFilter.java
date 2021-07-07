@@ -13,7 +13,7 @@ public class FermentationFilter implements Predicate<Beer> {
 
     @Override
     public boolean test(Beer beer) {
-        return beer.getFermentationTemp() >= fermentationType.getLowerLimit()
+        return fermentationType == null || beer.getFermentationTemp() >= fermentationType.getLowerLimit()
                 && beer.getFermentationTemp() <= fermentationType.getUpperLimit();
     }
 }

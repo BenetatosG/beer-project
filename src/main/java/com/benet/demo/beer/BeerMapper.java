@@ -7,6 +7,7 @@ import com.benet.demo.beer.dto.CreateFavoriteBeerDTO;
 import com.benet.demo.beer.dto.FavoriteBeerDTO;
 import com.benet.demo.clients.punk.dto.PunkBeerDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
@@ -18,7 +19,11 @@ public interface BeerMapper {
 
     BeerDTO beerToDTO(Beer beer);
 
+    @Mapping(target = "id", ignore = true)
+    Beer beerFromDTO(BeerDTO beerDTO);
+
     FavoriteBeerDTO favoriteBeerToDTO(FavoriteBeer favoriteBeer);
 
+    @Mapping(target = "id", ignore = true)
     FavoriteBeer fromCreateDTO(CreateFavoriteBeerDTO dto);
 }

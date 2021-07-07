@@ -14,7 +14,7 @@ public class CreateFavoriteBeerDTO {
     Boolean drunkBefore;
     String drunkBeerPlace;
     LocalDate drunkBeerDate;
-    @Size(max = 5, message = "Rating can be between 0 and 5")
+//    @Size(max = 5, message = "Rating can be between 0 and 5")
     Integer rating;
     String comments;
 }

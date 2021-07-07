@@ -1,21 +1,26 @@
 package com.benet.demo.beer.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Beer {
 
     @Id
-    private final Long id;
-    private final String name;
-    private final Double fermentationTemp;
-    private final Double ibu;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @NotEmpty(message = "Beer name can not be empty")
+    private String name;
+    private Double fermentationTemp;
+    private Double ibu;
     @ElementCollection(targetClass=String.class)
-    private final List<String> foodPairing;
+    private List<String> foodPairing;
 }
