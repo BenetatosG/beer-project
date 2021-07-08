@@ -3,6 +3,7 @@ package com.benet.demo.beer;
 import com.benet.demo.beer.domain.Beer;
 import com.benet.demo.beer.domain.FavoriteBeer;
 import com.benet.demo.beer.dto.BeerDTO;
+import com.benet.demo.beer.dto.CreateBeerDTO;
 import com.benet.demo.beer.dto.CreateFavoriteBeerDTO;
 import com.benet.demo.beer.dto.FavoriteBeerDTO;
 import com.benet.demo.clients.punk.dto.PunkBeerDTO;
@@ -20,7 +21,7 @@ public interface BeerMapper {
     BeerDTO beerToDTO(Beer beer);
 
     @Mapping(target = "id", ignore = true)
-    Beer beerFromDTO(BeerDTO beerDTO);
+    Beer beerFromDTO(CreateBeerDTO beerDTO);
 
     FavoriteBeerDTO favoriteBeerToDTO(FavoriteBeer favoriteBeer);
 

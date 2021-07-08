@@ -1,6 +1,8 @@
 package com.benet.demo.integration;
 
 import com.benet.demo.beer.dto.BeerDTO;
+import com.benet.demo.beer.dto.CreateBeerDTO;
+import com.benet.demo.beer.dto.CreateFavoriteBeerDTO;
 import com.benet.demo.beer.dto.FavoriteBeerDTO;
 import com.benet.demo.clients.punk.PunkApiClient;
 import com.benet.demo.integration.config.StubService;
@@ -31,13 +33,13 @@ public class BeersIT {
         BeerDTO beerDTO = beers.get(0);
 
         //Save first beer to favorites
-        FavoriteBeerDTO favoriteBeerDTO = FavoriteBeerDTO.builder()
-                .beer(beerDTO)
+        CreateFavoriteBeerDTO favoriteBeerDTO = CreateFavoriteBeerDTO.builder()
+                .beer(new CreateBeerDTO(beerDTO.getName(), beerDTO.getFermentationTemp(), beerDTO.getIbu(), beerDTO.getFoodPairing()))
                 .drunkBeerDate(LocalDate.now())
                 .drunkBeerPlace("Bucharest")
                 .rating(5)
                 .comments("Fine beer")
-                .drunkBefore(false)
+                .drunkBefore(true)
                 .build();
         beersSystem.saveFavoriteBeer(favoriteBeerDTO);
 

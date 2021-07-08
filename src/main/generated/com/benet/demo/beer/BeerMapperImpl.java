@@ -3,18 +3,19 @@ package com.benet.demo.beer;
 import com.benet.demo.beer.domain.Beer;
 import com.benet.demo.beer.domain.FavoriteBeer;
 import com.benet.demo.beer.dto.BeerDTO;
+import com.benet.demo.beer.dto.CreateBeerDTO;
 import com.benet.demo.beer.dto.CreateFavoriteBeerDTO;
 import com.benet.demo.beer.dto.FavoriteBeerDTO;
-import com.benet.demo.beer.dto.FavoriteBeerDTO.FavoriteBeerDTOBuilder;
 import com.benet.demo.clients.punk.dto.PunkBeerDTO;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-07-07T21:15:22+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.9.1 (AdoptOpenJDK)"
+    date = "2021-07-08T22:07:18+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (AdoptOpenJDK)"
 )
 public class BeerMapperImpl implements BeerMapper {
 
@@ -24,22 +25,16 @@ public class BeerMapperImpl implements BeerMapper {
             return null;
         }
 
-        List<String> foodPairing = null;
-        Long id = null;
-        String name = null;
-        Double fermentationTemp = null;
-        Double ibu = null;
+        Beer beer = new Beer();
 
+        beer.setId( punkBeerDTO.getId() );
+        beer.setName( punkBeerDTO.getName() );
+        beer.setFermentationTemp( punkBeerDTO.getFermentationTemp() );
+        beer.setIbu( punkBeerDTO.getIbu() );
         List<String> list = punkBeerDTO.getFoodPairing();
         if ( list != null ) {
-            foodPairing = new ArrayList<String>( list );
+            beer.setFoodPairing( new ArrayList<String>( list ) );
         }
-        id = punkBeerDTO.getId();
-        name = punkBeerDTO.getName();
-        fermentationTemp = punkBeerDTO.getFermentationTemp();
-        ibu = punkBeerDTO.getIbu();
-
-        Beer beer = new Beer( id, name, fermentationTemp, ibu, foodPairing );
 
         return beer;
     }
@@ -71,27 +66,20 @@ public class BeerMapperImpl implements BeerMapper {
     }
 
     @Override
-    public Beer beerFromDTO(BeerDTO beerDTO) {
+    public Beer beerFromDTO(CreateBeerDTO beerDTO) {
         if ( beerDTO == null ) {
             return null;
         }
 
-        List<String> foodPairing = null;
-        String name = null;
-        Double fermentationTemp = null;
-        Double ibu = null;
+        Beer beer = new Beer();
 
+        beer.setName( beerDTO.getName() );
+        beer.setFermentationTemp( beerDTO.getFermentationTemp() );
+        beer.setIbu( beerDTO.getIbu() );
         List<String> list = beerDTO.getFoodPairing();
         if ( list != null ) {
-            foodPairing = new ArrayList<String>( list );
+            beer.setFoodPairing( new ArrayList<String>( list ) );
         }
-        name = beerDTO.getName();
-        fermentationTemp = beerDTO.getFermentationTemp();
-        ibu = beerDTO.getIbu();
-
-        Long id = null;
-
-        Beer beer = new Beer( id, name, fermentationTemp, ibu, foodPairing );
 
         return beer;
     }
@@ -102,17 +90,25 @@ public class BeerMapperImpl implements BeerMapper {
             return null;
         }
 
-        FavoriteBeerDTOBuilder favoriteBeerDTO = FavoriteBeerDTO.builder();
+        Long id = null;
+        BeerDTO beer = null;
+        Boolean drunkBefore = null;
+        String drunkBeerPlace = null;
+        LocalDate drunkBeerDate = null;
+        Integer rating = null;
+        String comments = null;
 
-        favoriteBeerDTO.id( favoriteBeer.getId() );
-        favoriteBeerDTO.beer( beerToDTO( favoriteBeer.getBeer() ) );
-        favoriteBeerDTO.drunkBefore( favoriteBeer.getDrunkBefore() );
-        favoriteBeerDTO.drunkBeerPlace( favoriteBeer.getDrunkBeerPlace() );
-        favoriteBeerDTO.drunkBeerDate( favoriteBeer.getDrunkBeerDate() );
-        favoriteBeerDTO.rating( favoriteBeer.getRating() );
-        favoriteBeerDTO.comments( favoriteBeer.getComments() );
+        id = favoriteBeer.getId();
+        beer = beerToDTO( favoriteBeer.getBeer() );
+        drunkBefore = favoriteBeer.getDrunkBefore();
+        drunkBeerPlace = favoriteBeer.getDrunkBeerPlace();
+        drunkBeerDate = favoriteBeer.getDrunkBeerDate();
+        rating = favoriteBeer.getRating();
+        comments = favoriteBeer.getComments();
 
-        return favoriteBeerDTO.build();
+        FavoriteBeerDTO favoriteBeerDTO = new FavoriteBeerDTO( id, beer, drunkBefore, drunkBeerPlace, drunkBeerDate, rating, comments );
+
+        return favoriteBeerDTO;
     }
 
     @Override

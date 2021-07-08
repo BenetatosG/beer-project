@@ -35,6 +35,13 @@ dependencies {
 
 	testImplementation 'org.assertj:assertj-core:3.6.2'
 	testImplementation 'com.github.tomakehurst:wiremock:1.58'
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.3'
+	testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.3'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+
 
 }
 

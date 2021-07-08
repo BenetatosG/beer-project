@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Value
@@ -14,12 +12,10 @@ import java.time.LocalDate;
 public class FavoriteBeerDTO {
 
     Long id;
-    @NotNull
     BeerDTO beer;
     Boolean drunkBefore;
     String drunkBeerPlace;
     LocalDate drunkBeerDate;
-    @Size(max = 5)
     Integer rating;
     String comments;
 }
